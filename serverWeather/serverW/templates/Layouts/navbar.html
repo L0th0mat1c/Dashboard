@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
+    <title>Flask</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark">
+        <ul class="navbar nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/articlesPages">Articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profil">Profil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/loginPages">Se connecter</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Déconnection</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/registerPages">S'enregistrer</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    {% block body %}{% endblock body%}
+</body>
+</html>

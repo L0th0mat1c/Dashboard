@@ -1,0 +1,27 @@
+{% extends 'Layouts/navbar.html' %}
+
+{% block body %}
+    <form action="/registerPages" method="POST">
+        <div>
+            <label>Entrez un nom :</label>
+            <input type="text" placeholder="Entrez un nom" name="username">
+        </div>
+        <div>
+            <label>Entrez un email :</label>
+            <input type="text" placeholder="Entrez un email" name="email">
+        </div>
+        <div>
+            <label for="password">Entrez un password :</label>
+            <input type="password" placeholder="Entrez un mot de passe" name="password">
+        </div>
+        <div>
+            <label for="password">Entrez un password :</label>
+            <input type="password" placeholder="Entrez un mot de passe" name="password">
+        </div>
+        <div>
+            <label for="envoyer">Envoyer</label>
+            <button type="submit">Enregistrer</button>
+        </div>
+        
+    </form>
+{% endblock %}

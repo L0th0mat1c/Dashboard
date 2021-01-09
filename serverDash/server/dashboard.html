@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS_AJAX</title>
+    <script>
+                        fetch('http://localhost:3000/api/movies')
+                        .then(
+                            function(response) {
+                            if (response.status !== 200) {
+                                console.log('Looks like there was a problem. Status Code: ' +
+                                response.status);
+                                return;
+                            }
+
+                            // Examine the text in the response
+                            response.json()
+                        .then(function(data) {
+                                console.log(data);
+// Traitement réponse
+                            //sélection de l'endroit ou je mets mes films
+                            var display = document.getElementById("result");
+                                        
+                            //for each:
+                                data.forEach(function (article) {
+                                        //création div
+                                            var divElt = document.createElement("div");
+                                            divElt.classList.add("movie"); 
+                                            display.appendChild(divElt);
+                                        // création titre
+                                            var titreElt = document.createElement("h1");
+                                            titreElt.textContent = article.title;
+                                            divElt.appendChild(titreElt);
+                                        // création résumé
+                                            var summaryElt = document.createElement("p");
+                                            summaryElt.classList.add("summary"); 
+                                            summaryElt.textContent = article.summary;
+                                            divElt.appendChild(summaryElt);
+                                        // création release date
+                                            var releaseElt = document.createElement("p");
+                                            releaseElt.classList.add("rel"); 
+                                            releaseElt.textContent = "Release date : " + article.release_date;
+                                            divElt.appendChild(releaseElt);
+                                        // création duration
+                                            var durationElt = document.createElement("p");
+                                            durationElt.classList.add("dura"); 
+                                            durationElt.textContent = "Duration (in minutes): " + article.min_duration;
+                                            divElt.appendChild(durationElt);
+                                        // création bouton
+                                            var buttonElt = document.createElement("input");
+                                            buttonElt.setAttribute("type", "submit");
+                                            buttonElt.setAttribute("value", "more");
+                                            buttonElt.classList.add("btn"); 
+                                            divElt.appendChild(buttonElt);
+                                            buttonElt.addEventListener("click", function(){ window.alert("Une fenêtre... / WIP"); })
+                                            
+                                });
+///////////
+                            });
+                            }
+                        )
+                        .catch(function(err) {
+                            console.log('Fetch Error :-S', err);
+                        });
+
+
+   
+
+                            
+    </script>
+    <style>
+        .dura{
+           color: grey; 
+        }
+        .movie{
+            border: solid;
+            background-color: LightGray;
+            margin: 10px;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+    <h1>Recherche</h1>
+    <form>
+        <input id="recherche" type="test">
+        
+    </form>
+    </div>
+
+    <div id="result">
+
+    </div>
+
+</body>
+
+</html>

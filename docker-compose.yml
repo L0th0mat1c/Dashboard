@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+
+  front:
+    image: serverfront
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/serverFront'
+      - '/serverFront/node_modules'
+    ports:
+      - '8080:8080'
+
+  facebook:
+    image: serverfacebook
+    ports:
+      - "3050:3050"
+    volumes:
+      - '.:/serverFacebook'
+      - '/serverFacebook/node_modules'
+    
+  dashboard:
+    image: serverdash
+    ports: 
+      - "3030:3030"
+    volumes:
+      - '.:/serverDash'
+      - '/serverDash/node_modules'
+
+  gateway:
+    image: gateway
+    ports:
+      - "3000:3000"
+    volumes:
+      - '.:/gateway'
+      - '/gateway/node_modules'
+
+  twitter:
+    image: servertwitter
+    ports:
+      - "3001:3001"
+    volumes:
+      - '.:/serverTwitter'
+      - '/serverTwitter/node_modules'
+
+  news:
+    image: servernews
+    ports:
+      - "3070:3070"
+    volumes:
+      - '.:/serverNews'
+      - '/serverNews/node_modules'
